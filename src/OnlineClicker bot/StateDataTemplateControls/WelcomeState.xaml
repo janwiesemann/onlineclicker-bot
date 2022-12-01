@@ -10,6 +10,6 @@
 
     <FlowDocumentScrollViewer
         x:Name="readmeDocumentViewer"
-        MaxHeight="800"
+        MaxHeight="450"
         IsToolBarVisible="False" />
 </UserControl>

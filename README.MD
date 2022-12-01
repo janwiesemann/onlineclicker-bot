@@ -20,6 +20,6 @@ You can add additional votes by clicking on one of the ProgressBars/answers.
 
 ## Screenshots
 
-![OnlineClicker and Bot](screenshots/poll.png)
+![OnlineClicker and Bot](https://raw.githubusercontent.com/janwiesemann/onlineclicker-bot/main/screenshots/poll.png)
 
-![Balance mode enabled](screenshots/mode_balance.png)
+![Balance Mode](https://raw.githubusercontent.com/janwiesemann/onlineclicker-bot/main/screenshots/mode_balance.png)
