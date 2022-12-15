@@ -87,6 +87,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DataContextProxy.cs" />
     <Compile Include="ErrorState.cs" />
     <Compile Include="PollAnswer.cs" />
     <Compile Include="PollState.cs" />

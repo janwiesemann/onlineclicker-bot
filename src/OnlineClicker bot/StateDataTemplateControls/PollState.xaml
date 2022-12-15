@@ -6,10 +6,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="clr-namespace:OnlineClicker_bot"
+    x:Name="thisUserControl"
     d:DataContext="{d:DesignInstance {x:Type local:PollState},
                                      IsDesignTimeCreatable=False}"
     d:DesignWidth="400"
     mc:Ignorable="d">
+    <UserControl.Resources>
+        <local:DataContextProxy x:Key="MainDataContextProxy" DataSource="{Binding}" />
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -26,10 +30,23 @@
                         VerticalContentAlignment="Stretch"
                         Command="{Binding DataContext.AddVoteCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}, Mode=OneWay}"
                         CommandParameter="{Binding Mode=OneWay}">
+                        <Button.ToolTip>
+                            <ToolTip>
+                                <TextBlock>
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}Votes: {0:N0}/{1:N0}">
+                                            <Binding Path="Value" />
+                                            <Binding Path="DataSource.TotalNumberOfVotes" Source="{StaticResource MainDataContextProxy}" />
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                            </ToolTip>
+                        </Button.ToolTip>
+
                         <Grid>
                             <ProgressBar
                                 x:Name="progressBar"
-                                Maximum="{Binding DataContext.TotalNumberOfVotes, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}, Mode=OneWay}"
+                                Maximum="{Binding DataSource.TotalNumberOfVotes, Source={StaticResource MainDataContextProxy}}"
                                 Value="{Binding Value, Mode=OneWay}" />
                             <TextBlock
                                 Margin="10,5"
